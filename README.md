@@ -3,8 +3,8 @@ Remove Green Colour Using Machine Learning OpenCV
 
 # Result
 
-<img src="https://github.com/Rutulpatel7077/Green-Removal/blob/master/download.jpg" />
-<img src="https://github.com/Rutulpatel7077/Green-Removal/blob/master/1.jpg" />
+<img src="https://github.com/Rutulpatel7077/Green-Removal/blob/master/Result/download.jpg" />
+<img src="https://github.com/Rutulpatel7077/Green-Removal/blob/master/Result/1.jpg" />
 
 # Requirements
 
