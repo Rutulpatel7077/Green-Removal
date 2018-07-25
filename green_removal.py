@@ -8,7 +8,7 @@ import scipy.io as sio
 from skimage.io import imread, imsave
 
 #input image
-image = imread('download.jpg')
+image = imread('./Result/4.jpg')
 
 
 # Define our color selection boundaries in RGB values
@@ -60,7 +60,35 @@ hue_masked_image[hue_mask == 0] = [255]
 masked_image = np.copy(image)
 masked_image[hue_masked_image == 0] = [0, 0, 0]
 
+
+
+background_image = mpimg.imread('./Result/Stage.jpg')
+
+out_height = masked_image.shape[0]
+out_width = masked_image.shape[1]
+
+print("{} x {}".format(out_width, out_height))
+
+# Resize the image
+scale_x = float(out_width) / background_image.shape[1]
+scale_y = float(out_height) / background_image.shape[0]
+scale = scale_x
+
+if scale_x>1.0 or scale_y>1.0:
+    scale = scale_x if scale_x>scale_y else scale_y
+    
+if scale>1.0:
+    background_image = cv2.resize(background_image, background_image.shape*scale) 
+    
+background_image = background_image[0:out_height, 0:out_width]
+
+
+# Add masked S channel Mask Back
+final_image = background_image.copy()
+final_image[hue_masked_image != 0] = [0, 0, 0]
+final_image = final_image + masked_image
+
 #Write Image
-imsave('1.jpg', masked_image)
+imsave('3.jpg', final_image)
 
 
